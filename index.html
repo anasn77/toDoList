@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Task Master</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <div class="card">
+      <header class="card-head">
+        <div class="logo">
+          <span class="checkmark">✓</span>
+        </div>
+        <h1>Task Master</h1>
+        <p class="tagline">Organize your tasks efficiently</p>
+      </header>
+      <section class="controls">
+        <div class="left-controls">
+          <div class="search">
+            <span class="icon">🔍</span>
+            <input class="search-task" type="search" placeholder="Search tasks..." />
+          </div>
+
+          <div class="filter">
+            <label>
+              <input type="checkbox" checked />
+              <span>All Tasks</span>
+            </label>
+            <select class="select" aria-label="view filter">
+              <option>All Tasks</option>
+              <option>Active</option>
+              <option>Completed</option>
+            </select>
+          </div>
+        </div>
+        <button class="clear">🗑 Clear All</button>
+      </section>
+      <section class="add-task">
+        <input class="text" type="text" placeholder="What needs to be done?" />
+        <button class="add_task">Add Task</button>
+        </section>
+          <div class="tasks"></div>
+        <footer class="card-foot">
+            <div class="items-left"></div>
+            <div class="filters">
+              <button class="filter-btn active">All</button>
+              <button class="filter-btn">Active</button>
+              <button class="filter-btn">Completed</button>
+            </div>
+        </footer>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

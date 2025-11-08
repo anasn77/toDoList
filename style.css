@@ -1,0 +1,94 @@
+/* styles.css - paste next to index.html */
+:root{
+  --bg:#2f6fa8;         /* page background (approx) */
+  --card:#ffffff;
+  --muted:#dfe8ee;
+  --accent:#1d9bd1;     /* header blue */
+  --clear:#e85f57;      /* red clear */
+  --add:#7fcf9b;        /* green add */
+  --edit:#f0c04a;       /* yellow edit */
+  --danger:#e76b6b;     /* delete red */
+  --text:#333;
+  --light:#fafafa;
+  --shadow: 0 10px 30px rgba(31,41,55,0.12);
+  font-size:16px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Roboto, system-ui, -apple-system, "Segoe UI", Arial; background:var(--bg); color:var(--text);}
+.wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:40px;}
+
+.card{
+  width:720px;
+  max-width:96%;
+  background:var(--card);
+  border-radius:14px;
+  padding:28px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(0,0,0,0.04);
+}
+
+/* Header */
+.card-head{text-align:center;margin-bottom:18px}
+.logo{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:rgba(29,155,209,0.08);margin:0 auto 8px}
+.checkmark{color:var(--accent);font-weight:700;font-size:22px}
+.card-head h1{margin:0;color:var(--accent);font-size:34px;font-weight:700}
+.tagline{margin:6px 0 0;color:#8b9aa6;font-weight:400}
+
+/* Controls */
+.controls{display:flex;align-items:center;justify-content:space-between;margin:16px 0}
+.left-controls{display:flex;gap:12px;align-items:center}
+.search{display:flex;align-items:center;background:#f3f6f7;border:1px solid #e6eef2;padding:10px 12px;border-radius:8px;min-width:260px}
+.search .icon{margin-right:8px;opacity:.7}
+.search input{border:0;background:transparent;outline:none;font-size:14px}
+
+.filter{display:flex;align-items:center;gap:8px;color:#6f7b82}
+.filter select{padding:8px;border-radius:6px;border:1px solid #e1e6ea;background:#fff}
+
+.btn{border:0;padding:10px 16px;border-radius:8px;font-weight:600;cursor:pointer}
+.btn-clear{background:var(--clear);color:#fff;box-shadow:0 6px 0 rgba(232,95,87,0.12)}
+.btn-add{background:var(--add);color:#fff;}
+
+/* Add task */
+.add-task{display:flex;gap:12px;margin:10px 0 20px}
+.task-input{flex:1;padding:14px;border-radius:8px;border:1px solid #eef3f6;background:#fbfcfd;outline:none;font-size:15px}
+
+/* Task list */
+.task-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.task{
+  display:flex;align-items:center;gap:14px;padding:14px;border-radius:8px;background:#fbfcfd;border:1px solid #eef4f6;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+}
+.task .task-check{display:flex;align-items:center}
+.task .task-check input{display:none}
+.square{display:inline-flex;width:26px;height:26px;border-radius:6px;border:1px solid #d9e3e8;align-items:center;justify-content:center}
+.square.checked{background:var(--add);color:#fff;border-color:transparent}
+.task-text{flex:1;font-size:16px}
+.task-actions{display:flex;gap:8px}
+
+/* small action buttons */
+/* .btn.small{padding:8px 10px;border-radius:8px;font-size:14px} */
+.edit{background:var(--edit);color:#7a5b10}
+.delete{background:var(--danger);color:#fff}
+
+/* Completed state styling */
+.task.completed .task-text{color:#9aa6ad;text-decoration:line-through;opacity:.8}
+.task.completed .square{background:var(--add);color:#fff;border-color:transparent}
+
+/* Footer */
+.card-foot{display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px solid #f0f3f5;margin-top:18px}
+.filters{display:flex;gap:10px}
+.filter-btn{padding:8px 14px;border-radius:8px;border:1px solid transparent;background:transparent;cursor:pointer}
+.filter-btn.active{background:var(--accent);color:#fff;border-color:rgba(29,155,209,0.15);box-shadow:0 4px 0 rgba(29,155,209,0.08)}
+
+/* Responsive tweaks */
+@media (max-width:520px){
+  .controls{flex-direction:column;gap:12px;align-items:stretch}
+  .left-controls{flex-direction:column;align-items:stretch}
+  .search{width:100%}
+  .add-task{flex-direction:column}
+  .btn-clear{width:100%}
+}
+.task.done {
+  opacity: 0.4  ;
+}
