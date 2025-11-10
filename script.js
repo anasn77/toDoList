@@ -33,14 +33,43 @@ taskList.addEventListener("click",(e)=>{
     }
     //edit button
     if(e.target.classList.contains("Edit")){
-        let newTitle = prompt("Enter the new title for the task:", e.target.parentElement.firstChild.textContent);
-        if (newTitle !== null && newTitle.trim() !== "") {
-            e.target.parentElement.firstChild.textContent = newTitle;
-            // Update task in local storage
-            editTaskInLocalStorage(e.target.parentElement.getAttribute("data-id"), newTitle);
-        }
+        const taskDiv = e.target.parentElement;
+        const taskText = taskDiv.firstChild;
+        const taskId = taskDiv.getAttribute("data-id");
+        
+        // Create input element
+        const input = document.createElement("input");
+        input.type = "text";
+        input.value = taskText.textContent;
+        input.className = "task-edit-input";
+        
+        // Replace text with input
+        taskDiv.replaceChild(input, taskText);
+        input.focus();
+        
+        // Handle saving on enter with arrow function
+        const saveEdit = () => {
+            const newTitle = input.value.trim();
+            if (newTitle !== "") {
+                const newText = document.createTextNode(newTitle);
+                taskDiv.replaceChild(newText, input);
+                editTaskInLocalStorage(taskId, newTitle);
+            } else {
+                taskDiv.replaceChild(taskText, input);
+            }
+        };
+        
+        input.addEventListener("blur", saveEdit);
+        input.addEventListener("keyup", (e) => {
+            if (e.key === "Enter") {
+                saveEdit();
+            }
+            if (e.key === "Escape") {
+                taskDiv.replaceChild(taskText, input);
+            }
+        });
     }
-     // update the status in local storage
+    // update the status in local storage
     if (e.target.classList.contains("check")) {
     
     chekstatusInLocalStorage(e.target.dataset.id, e.target.checked);
@@ -231,3 +260,4 @@ function updateCounts() {
     itemsLeftDiv.textContent = `Total: ${total} | Completed: ${completed} | Pending: ${pending}`;
   }
 }
+//done mark when checkbox is checked
