@@ -36,11 +36,38 @@ html,body{height:100%;margin:0;font-family:Roboto, system-ui, -apple-system, "Se
 .tagline{margin:6px 0 0;color:#8b9aa6;font-weight:400}
 
 /* Controls */
-.controls{display:flex;align-items:center;justify-content:space-between;margin:16px 0}
-.left-controls{display:flex;gap:12px;align-items:center}
-.search{display:flex;align-items:center;background:#f3f6f7;border:1px solid #e6eef2;padding:10px 12px;border-radius:8px;min-width:260px}
+.controls {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 16px 0;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.left-controls{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex: 1;
+}
+.search{
+  display:flex;
+  align-items:center;
+  background:#f3f6f7;
+  border:1px solid #e6eef2;
+  padding:10px 12px;
+  border-radius:8px;
+  min-width:260px;
+  flex: 1;
+}
 .search .icon{margin-right:8px;opacity:.7}
-.search input{border:0;background:transparent;outline:none;font-size:14px}
+.search input{
+  border:0;
+  background:transparent;
+  outline:none;
+  font-size:14px;
+  width: 100%;
+}
 
 .filter{display:flex;align-items:center;gap:8px;color:#6f7b82}
 .filter select{padding:8px;border-radius:6px;border:1px solid #e1e6ea;background:#fff}
@@ -255,13 +282,99 @@ html,body{height:100%;margin:0;font-family:Roboto, system-ui, -apple-system, "Se
 }
 
 /* Responsive tweaks */
+/* Mobile (small devices) */
 @media (max-width:520px){
-  .controls{flex-direction:column;gap:12px;align-items:stretch}
-  .left-controls{flex-direction:column;align-items:stretch}
+  html,body{font-size:15px}
+  .wrap{padding:20px}
+  .card{padding:18px;width:100%;border-radius:12px}
+  
+  /* Controls section */
+  .controls{
+    flex-direction:column;
+    gap:16px;
+    align-items:stretch;
+  }
+  .left-controls{
+    flex-direction:column;
+    align-items:stretch;
+    width:100%;
+  }
   .search{width:100%}
-  .add-task{flex-direction:column}
-  .btn-clear{width:100%}
+  .clear{
+    width:100%;
+    margin-top:4px;
+    order:3;
+  }
+  
+  /* Make add task input + button span the full width stacked */
+  .add-task{
+    flex-direction:column;
+    gap:10px;
+    margin:16px 0;
+  }
+  .task-input{
+    width:100%;
+    padding:12px;
+  }
+  .add_task{
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+  }
+  
+  /* Task cards: keep content inline with actions */
+  .task{
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:12px 16px;
+  }
+  .task-left{
+    flex:1;
+    min-width:0; /* Prevent flex item from overflowing */
+    gap:10px;
+  }
+  .task-text{
+    flex:1;
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .task-actions{
+    display:flex;
+    gap:8px;
+    flex-shrink:0;
+  }
+  .edit, .delete {
+    padding:6px 10px;
+    font-size:13px;
+  }
+  
+  .filter-btn{padding:8px 12px}
 }
+
+/* Tablet (medium devices) */
+@media (min-width:521px) and (max-width:1023px) {
+  html,body{font-size:15.5px}
+  .card{width:92%;padding:22px}
+  .add_task{padding:12px 24px}
+  .task{padding:14px 18px}
+}
+
+/* Laptop / Desktop (larger screens) */
+@media (min-width:1024px){
+  html,body{font-size:16px}
+  .wrap{padding:48px}
+  .card{width:900px;padding:36px}
+  .card-head h1{font-size:40px}
+  .add-task{gap:20px}
+  .add_task{padding:18px 36px;font-size:16px}
+  .task{padding:18px 24px;border-radius:12px}
+  .task-text{font-size:17px}
+}
+
 .task.done {
-  opacity: 0.4  ;
+  opacity: 0.4;
 }
