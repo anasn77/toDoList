@@ -250,15 +250,17 @@ html,body{height:100%;margin:0;font-family:Roboto, system-ui, -apple-system, "Se
 
 .filters {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     background: #f8f9fa;
-    padding: 4px;
+    padding: 3px;
     border-radius: 12px;
     border: 1px solid #eef0f2;
+    width: 100%;
+    justify-content: center;
 }
 
 .filter-btn {
-    padding: 10px 18px;
+    padding: 8px 12px;
     border-radius: 8px;
     border: none;
     background: transparent;
@@ -266,7 +268,10 @@ html,body{height:100%;margin:0;font-family:Roboto, system-ui, -apple-system, "Se
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-size: 14px;
+    font-size: 13px;
+    flex: 1;
+    text-align: center;
+    max-width: 110px;
 }
 
 .filter-btn:hover {
@@ -352,7 +357,23 @@ html,body{height:100%;margin:0;font-family:Roboto, system-ui, -apple-system, "Se
     font-size:13px;
   }
   
-  .filter-btn{padding:8px 12px}
+  .card-foot {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .filters {
+    width: 100%;
+    padding: 3px;
+    gap: 4px;
+  }
+  
+  .filter-btn {
+    padding: 6px 8px;
+    font-size: 12px;
+    min-width: 0;
+    flex: 1;
+  }
 }
 
 /* Tablet (medium devices) */
